@@ -54,15 +54,23 @@ function start(){
     interval = setInterval(runtimer, 10);
     timerRunning = true;
   }
-  console.log(textEnterdLength);
+  // console.log(textEnterdLength);
 }
 
 // Reset everything:
 function reset(){
-  console.log("reset button has been pressed!");
+  clearInterval(interval);
+  interval = null;
+  timer = [0,0,0,0];
+  timerRunning = false;
+
+  testArea.value = "";
+  theTimer.innerHTML = "00:00:00";
+  testWrapper.style.borderColor = "gray";
+  // console.log("reset button has been pressed!");
 }
 
 // Event listeners for keyboard input and the reset button:
 testArea.addEventListener("keypress", start, false);
 testArea.addEventListener("keyup", spellCheck, false);
-testArea.addEventListener("click", reset, false);
+resetButton.addEventListener("click", reset, false);
